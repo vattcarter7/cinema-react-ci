@@ -105,7 +105,7 @@ const SlideShow = (props) => {
           )}
         </div>
         <Indicators currentSlide={slideIndex} />
-        {!showArrows ? <RenderArrows /> : null}
+        {showArrows ? <RenderArrows /> : null}
       </div>
     </Fragment>
   );
