@@ -1,7 +1,7 @@
 import React from 'react';
-import SlideShow from '../slide-show/SlideShow';
 
 import './MainContent.scss';
+import SlideShow from '../slide-show/SlideShow';
 
 const MainContent = () => {
   const images = [
