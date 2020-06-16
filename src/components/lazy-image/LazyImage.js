@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import placeHolder from '../../assets/lazy_loader.gif';
@@ -43,7 +43,7 @@ const LazyImage = (props) => {
   }, [src, imageSrc, imageRef]);
 
   return (
-    <>
+    <Fragment>
       <div
         className={className}
         ref={setImageRef}
@@ -52,7 +52,7 @@ const LazyImage = (props) => {
       >
         {children}
       </div>
-    </>
+    </Fragment>
   );
 };
 

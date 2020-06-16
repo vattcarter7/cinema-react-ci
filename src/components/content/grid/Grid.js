@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ const Grid = (props) => {
   }, [list]);
 
   return (
-    <>
+    <Fragment>
       <div className="grid">
         {movieData.map((data) => (
           <div key={uuidv4()}>
@@ -41,7 +41,7 @@ const Grid = (props) => {
           </div>
         ))}
       </div>
-    </>
+    </Fragment>
   );
 };
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './MainContent.scss';
-import Slideshow from '../slide-show/Slideshow';
+import SlideShow from '../slide-show/SlideShow';
 import Paginate from '../paginate/Paginate';
 import Grid from '../grid/Grid';
 import { IMAGE_URL } from '../../../services/movies.service';
@@ -66,7 +66,7 @@ const MainContent = (props) => {
 
   return (
     <div className="main-content">
-      <Slideshow images={images} auto={true} showArrows={true} />
+      <SlideShow images={images} auto={true} showArrows={true} />
       <div className="grid-movie-title">
         <div className="movieType">{HEADER_TYPE[movieType]}</div>
         <div className="paginate">
