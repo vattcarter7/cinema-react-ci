@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './Slideshow.scss';
@@ -97,7 +97,7 @@ const Slideshow = (props) => {
   };
 
   return (
-    <Fragment>
+    <>
       <div className="slider">
         <div className="slider-slides">
           {images && images.length && slideShow && (
@@ -110,7 +110,7 @@ const Slideshow = (props) => {
         <Indicators currentSlide={slideIndex} />
         {showArrows ? <RenderArrows /> : null}
       </div>
-    </Fragment>
+    </>
   );
 };
 
