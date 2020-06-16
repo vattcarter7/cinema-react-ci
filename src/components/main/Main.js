@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -53,16 +53,18 @@ const Main = (props) => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="main" ref={mainRef} onScroll={handleScroll}>
         {loading ? (
           <Spinner />
         ) : (
-          <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>
+          <Fragment>
+            {searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}
+          </Fragment>
         )}
         <div ref={bottomLineRef}></div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

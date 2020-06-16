@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -85,7 +85,7 @@ const Header = (props) => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="header-nav-wrapper">
         <div className="header-bar"></div>
         <div className="header-navbar">
@@ -125,7 +125,7 @@ const Header = (props) => {
           </ul>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 
