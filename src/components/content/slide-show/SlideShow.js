@@ -1,15 +1,14 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
+
 import './SlideShow.scss';
 
-const SlideShow = (props) => {
+const Slideshow = (props) => {
   const { images, auto, showArrows } = props;
-
   const [state, setState] = useState({
-    slideshow: images[0],
+    slideShow: images[0],
     slideIndex: 0
   });
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliderInterval, setSliderInterval] = useState(0);
 
@@ -28,6 +27,7 @@ const SlideShow = (props) => {
         clearInterval(sliderInterval);
       };
     }
+
     // eslint-disable-next-line
   }, []);
 
@@ -37,8 +37,8 @@ const SlideShow = (props) => {
     currentSlideIndex = lastIndex >= images.length ? 0 : lastIndex;
     setState((prev) => ({
       ...prev,
-      slideShow: images[currentSlideIndex],
-      slideIndex: currentSlideIndex
+      slideIndex: currentSlideIndex,
+      slideShow: images[currentSlideIndex]
     }));
   };
 
@@ -61,8 +61,8 @@ const SlideShow = (props) => {
     setCurrentIndex(index);
     setState((prev) => ({
       ...prev,
-      slideShow: images[index],
-      slideIndex: index
+      slideIndex: index,
+      slideShow: images[index]
     }));
   };
 
@@ -98,9 +98,7 @@ const SlideShow = (props) => {
           {images && images.length && slideShow && (
             <div
               className="slider-image"
-              style={{
-                backgroundImage: `url(${slideShow.url})`
-              }}
+              style={{ backgroundImage: `url(${slideShow.url})` }}
             ></div>
           )}
         </div>
@@ -111,11 +109,11 @@ const SlideShow = (props) => {
   );
 };
 
-SlideShow.propTypes = {
+Slideshow.propTypes = {
   images: PropTypes.array.isRequired,
   auto: PropTypes.bool.isRequired,
   showArrows: PropTypes.bool.isRequired,
   currentSlide: PropTypes.number
 };
 
-export default SlideShow;
+export default Slideshow;
