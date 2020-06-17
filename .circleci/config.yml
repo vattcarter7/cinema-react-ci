@@ -85,8 +85,8 @@ jobs:
       - *show-current-branch-name
       - *restore-cache
       - run:
-        name: Run unit test
-        command: npm run test
+          name: Run unit test
+          command: npm run test
 
   deploy-to-aws-s3:
     executor: app-executor
