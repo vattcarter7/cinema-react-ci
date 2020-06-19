@@ -19,3 +19,26 @@
   grid-area: text2;
   color: #ffffff;
 }
+
+.grid-read-more {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+
+  .grid-cell-button {
+    background-color: #dd003f;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    outline: none;
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import './Overview.scss';
 import { IMAGE_URL } from '../../../../services/movies.service';
+import numberFormatter from '../../../../utils/numberFormatter';
 
 const Overview = (props) => {
   const { movie } = props;
@@ -50,26 +51,6 @@ const Overview = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const numberFormatter = (number, digits) => {
-    const symbolArray = [
-      { value: 1, symbol: '' },
-      { value: 1e3, symbol: 'K' },
-      { value: 1e6, symbol: 'M' },
-      { value: 1e9, symbol: 'B' }
-    ];
-    const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    let result = '';
-
-    for (let i = 0; i < symbolArray.length; i++) {
-      if (number >= symbolArray[i].value) {
-        result =
-          (number / symbolArray[i].value).toFixed(digits).replace(regex, '$1') +
-          symbolArray[i].symbol;
-      }
-    }
-    return result;
-  };
-
   return (
     <div className="overview">
       <div className="overview-column-1">
@@ -113,7 +94,7 @@ const Overview = (props) => {
           ))}
         </div>
         <div className="overview-detail">
-          <h6>Language(s)</h6>
+          <h6>Language</h6>
           <p>
             {details.spoken_languages.map((language) => (
               <a href="!#" key={language.name}>
@@ -126,7 +107,7 @@ const Overview = (props) => {
           <div className="overview-detail" key={data.id}>
             <h6>{data.name}</h6>
             <p>
-              <a href="!#">{data.value}</a>
+              <a href="!#">{data.value ? data.value : '-'}</a>
             </p>
           </div>
         ))}
@@ -143,4 +124,4 @@ const mapStateToProps = (state) => ({
   movie: state.movies.movie
 });
 
-export default connect(mapStateToProps, {})(Overview);
+export default connect(mapStateToProps)(Overview);

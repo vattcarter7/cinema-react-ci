@@ -35,14 +35,18 @@ const SearchResult = (props) => {
                 alt="placeholder"
               >
                 <div className="grid-read-more">
-                  <Link to={`/${data.id}/${formatMovieTitle(data.title)}/details`}>Read More</Link>
+                  <button className="grid-cell-button">
+                    <Link to={`/${data.id}/${formatMovieTitle(data.title)}/details`}>
+                      Read More
+                    </Link>
+                  </button>
                 </div>
                 <div className="grid-detail">
                   <span className="grid-detail-title">{data.title}</span>
                   <div className="grid-detail-rating">
-                    <Rating rating={data.vote_average} totalStars={10} />
+                    <Rating rating={data.vote_average} totalStars={5} />
                     &nbsp;&nbsp;
-                    <div className="grid-vote-average">{data.vote_average}</div>
+                    {/* <div className="grid-vote-average">{data.vote_average}</div> */}
                   </div>
                 </div>
               </LazyImage>

@@ -76,13 +76,10 @@ const Details = (props) => {
                     </ul>
                   </div>
                   <div className="rating">
-                    <Rating
-                      className="rating-stars"
-                      rating={details.vote_average}
-                      totalStars={10}
-                    />
+                    <Rating className="rating-stars" rating={details.vote_average} totalStars={5} />
                     &nbsp;
-                    <span>{details.vote_average}</span> <p>({details.vote_count}) reviews</p>
+                    {/* <span>{details.vote_average}</span> */}{' '}
+                    <p>({details.vote_count}) reviews</p>
                   </div>
                   <Tabs>
                     <div label="Overview">
