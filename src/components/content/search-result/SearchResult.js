@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import '../grid/Grid.scss';
 import './SearchResult.scss';
+import formatMovieTitle from '../../../utils/formatMovieTitle';
 import Rating from '../rating/Rating';
 import { IMAGE_URL } from '../../../services/movies.service';
 import LazyImage from '../../lazy-image/LazyImage';
@@ -17,11 +18,6 @@ const SearchResult = (props) => {
   useEffect(() => {
     setMovieData(searchResult);
   }, [searchResult]);
-
-  const formatMovieTitle = (title) => {
-    const titleString = title.toLowerCase();
-    return titleString.replace(/ /g, '_');
-  };
 
   return (
     <div className="searchKeyword">

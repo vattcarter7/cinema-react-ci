@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './Grid.scss';
+import formatMovieTitle from '../../../utils/formatMovieTitle';
 import Rating from '../rating/Rating';
 import { IMAGE_URL } from '../../../services/movies.service';
 import LazyImage from '../../lazy-image/LazyImage';
@@ -16,11 +17,6 @@ const Grid = (props) => {
   useEffect(() => {
     setMovieData(list);
   }, [list]);
-
-  const formatMovieTitle = (title) => {
-    const titleString = title.toLowerCase();
-    return titleString.replace(/ /g, '_');
-  };
 
   return (
     <Fragment>

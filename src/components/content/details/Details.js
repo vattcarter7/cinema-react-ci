@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './Details.scss';
@@ -10,7 +10,7 @@ import Overview from './overview/Overview';
 import Crew from './crew/Crew';
 import Media from './media/Media';
 import Reviews from './reviews/Reviews';
-import { movieDetails } from '../../../redux/actions/movies';
+import { movieDetails, clearMovieDetails } from '../../../redux/actions/movies';
 import { pathURL } from '../../../redux/actions/routes';
 import { IMAGE_URL } from '../../../services/movies.service';
 import Spinner from '../../spinner/Spinner';
@@ -20,13 +20,23 @@ const Details = (props) => {
   const [details, setDetails] = useState();
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+
+    return () => {
+      // trigger when user click back button in the browser
+      if (history.action === 'POP') {
+        dispatch(clearMovieDetails());
+        console.log('back button is pressed!!');
+      }
+    };
+  }, [history, dispatch]);
 
   useEffect(() => {
     pathURL(match.path, match.url);
@@ -101,6 +111,7 @@ const Details = (props) => {
 Details.propTypes = {
   movie: PropTypes.array,
   movieDetails: PropTypes.func,
+  clearMovieDetails: PropTypes.func,
   pathURL: PropTypes.func,
   match: PropTypes.object
 };
@@ -109,4 +120,4 @@ const mapStateToProps = (state) => ({
   movie: state.movies.movie
 });
 
-export default connect(mapStateToProps, { movieDetails, pathURL })(Details);
+export default connect(mapStateToProps, { movieDetails, clearMovieDetails, pathURL })(Details);
